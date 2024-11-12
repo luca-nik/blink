@@ -1,6 +1,7 @@
 import { ActionGetResponse, ActionPostResponse, ActionPostRequest, 
   ACTIONS_CORS_HEADERS, createActionHeaders, ActionError } from "@solana/actions"
 import {clusterApiUrl, PublicKey, SystemProgram, Transaction, Connection, LAMPORTS_PER_SOL} from "@solana/web3.js"
+import { IconBrandUpwork } from "@tabler/icons-react";
 import { headers } from "next/headers";
 import { stringify } from "querystring";
 
@@ -9,31 +10,32 @@ const cors_headers = createActionHeaders(); //Da aggiustare
 
 export async function GET(request: Request) {
   try {
+    const requestURL = new URL(request.url);
+    const iconURL = new URL("CypherBee.png", requestURL.origin);
     const responseBody: ActionGetResponse = {
-      icon: "http://localhost:3000/CypherBee.jpg",
-      description: "Read Prof. CypherBee's [DeSci whitepaper](http://localhost:3000/DeSci.pdf) and join the vision of a open, democratic, and decentralized science using blockchain technology.\n\nThis is a Blink (Blockchain Link) and allows you to directly and safely transfer funds from your wallet to Prof. CypherBee's to help her in her quest towards decentralization of science.\n\nImagine this being you, allowing your fellow scientists and organization to finance your work directly, speeding up the pace of scientific progress.",
-      title: "Imagine a world where scientists earn fairly for their contributions. Support the cypherbees and join the colony!",
+      type: "action",
+      icon: iconURL.toString(),
+      description: "Imagine a world where scientists are fairly compensated for their work.\n\nRead Prof. CypherBee's [DeSci whitepaper](http://localhost:3000/DeSci.pdf) and join the vision of an open, democratic, and decentralized science powered by blockchain technology. \n\n Support Prof. CypherBee in her quest to decentralize science, creating a new era of innovation and fairness for scientists worldwide.",
+      title: "Support the cypherbees and join the colony!",
       label: "Donate",
-      error: {
-        message: "Huston we got a problem"
-      },
       links: {
         actions: [
           {
-            href: request.url+"?action=donate&amount={amountParam}",
+            type: "action",
             label: "donate",
+            href: request.url+"?action=donate&amount={amountParam}",
             parameters:[
               {
                 name: "amountParam",
                 label: "Amount in SOL",
                 required: true,
-              }
-            ]
-          }
-      ]
+              },
+            ],
+          },
+        ],
       },
 
-    }
+    };
     const response = Response.json(responseBody, {headers: ACTIONS_CORS_HEADERS});
     return response;
   } catch(err) {
@@ -72,7 +74,7 @@ export async function POST(request: Request) {
   }
 
   if (action =="donate"){
-    message_ = "Thanks for your donation of " + amount_ + " SOL, this will help DeSci."; 
+    message_ = "Thanks for joining the DeSci colony and for your donation of " + amount_ + " SOL."; 
   }else{
     message_ ="Thanks for your donation, this will help DeSci."; 
   };
