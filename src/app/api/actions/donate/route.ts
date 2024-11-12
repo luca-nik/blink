@@ -16,7 +16,7 @@ export async function GET(request: Request) {
       type: "action",
       icon: iconURL.toString(),
       description: "Imagine a world where scientists are fairly compensated for their work.\n\nRead Prof. CypherBee's [DeSci whitepaper](http://localhost:3000/DeSci.pdf) and join the vision of an open, democratic, and decentralized science powered by blockchain technology. \n\n Support Prof. CypherBee in her quest to decentralize science, creating a new era of innovation and fairness for scientists worldwide.",
-      title: "Support the cypherbees and join the colony!",
+      title: "Support the cypherbees and join the hive!",
       label: "Donate",
       links: {
         actions: [
@@ -74,7 +74,7 @@ export async function POST(request: Request) {
   }
 
   if (action =="donate"){
-    message_ = "Thanks for joining the DeSci colony and for your donation of " + amount_ + " SOL."; 
+    message_ = "Thanks for joining the DeSci hive and for your donation of " + amount_ + " SOL."; 
   }else{
     message_ ="Thanks for your donation, this will help DeSci."; 
   };
