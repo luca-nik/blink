@@ -54,25 +54,6 @@ The DeSci dApp addresses these challenges through a blockchain-powered ecosystem
 4. **Funding**:
    - The platform allows crowdfunding for scientific projects, promoting grassroots research initiatives.
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/<your-repo-name>.git
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Set up the Solana development environment following [Solana Docs](https://docs.solana.com/).
-4. Deploy the smart contracts using the Anchor framework:
-   ```bash
-   anchor build && anchor deploy
-   ```
-5. Start the frontend:
-   ```bash
-   npm run dev
-   ```
-
 ## Roadmap
 - Integrate more advanced DAO governance features.
 - Expand tipping options to include multi-token support.
